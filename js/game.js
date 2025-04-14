@@ -1,9 +1,15 @@
 const svg = document.getElementById("game-canvas");
 const path = document.getElementById("heartPath");
 const result = document.getElementById("result");
+const timerEl = document.getElementById("timer");
+const successScreen = document.getElementById("success-screen");
+const failScreen = document.getElementById("fail-screen");
+const rewardCodeEl = document.getElementById("reward-code");
 
 let drawing = false;
 let points = [];
+let timer = 30;
+let countdown;
 
 function getSVGPoint(event) {
   const pt = svg.createSVGPoint();
@@ -18,6 +24,7 @@ function getSVGPoint(event) {
 }
 
 function startDraw(e) {
+  if (!countdown) startTimer();
   drawing = true;
   points = [];
   e.preventDefault();
@@ -32,7 +39,6 @@ function draw(e) {
 
 function endDraw() {
   drawing = false;
-  checkAccuracy();
 }
 
 function drawDot(x, y) {
@@ -52,7 +58,6 @@ function checkAccuracy() {
     const userX = points[i].x;
     const userY = points[i].y;
 
-    // Najbliższy punkt na ścieżce
     for (let d = 0; d < pathLength; d += 2) {
       const pos = path.getPointAtLength(d);
       const dx = userX - pos.x;
@@ -69,10 +74,44 @@ function checkAccuracy() {
   const score = (passed / (points.length / 5)) * 100;
 
   if (score > 70) {
-    result.textContent = `🎉 Sukces! Trafiłeś w ${score.toFixed(0)}% kształtu!`;
+    showSuccess();
   } else {
-    result.textContent = `😢 Nie udało się. Trafiłeś tylko w ${score.toFixed(0)}%.`;
+    showFail();
   }
+}
+
+function startTimer() {
+  countdown = setInterval(() => {
+    timer--;
+    timerEl.textContent = `⏱️ ${timer}`;
+    if (timer <= 0) {
+      clearInterval(countdown);
+      endDraw();
+      checkAccuracy();
+    }
+  }, 1000);
+}
+
+function generateCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "";
+  for (let i = 0; i < 8; i++) {
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return code;
+}
+
+function showSuccess() {
+  successScreen.classList.remove("hidden");
+  rewardCodeEl.textContent = generateCode();
+}
+
+function showFail() {
+  failScreen.classList.remove("hidden");
+}
+
+function restartGame() {
+  location.reload();
 }
 
 // Obsługa zdarzeń

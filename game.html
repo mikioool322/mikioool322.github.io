@@ -1,25 +1,32 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <title>Dalgona Game</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-</head>
 <body>
-  <div class="centered">
-    <svg id="game-canvas" viewBox="0 0 100 100">
-      <path id="heartPath" d="M50 30 
-           C50 10, 90 10, 90 40 
-           C90 70, 50 90, 50 90 
-           C50 90, 10 70, 10 40 
-           C10 10, 50 10, 50 30 Z"
-        fill="none" stroke="#d94f30" stroke-width="3" />
-    </svg>
-    <p>Przeciągnij palcem po kształcie</p>
-    <div id="result"></div>
-  </div>
-
-  <script src="js/game.js"></script>
-</body>
-</html>
+    <div class="centered">
+      <div id="timer">⏱️ 30</div>
+  
+      <svg id="game-canvas" viewBox="0 0 100 100">
+        <path id="heartPath" d="M50 30 
+             C50 10, 90 10, 90 40 
+             C90 70, 50 90, 50 90 
+             C50 90, 10 70, 10 40 
+             C10 10, 50 10, 50 30 Z"
+          fill="none" stroke="#d94f30" stroke-width="3" />
+      </svg>
+      <p>Przeciągnij palcem po kształcie</p>
+    </div>
+  
+    <!-- EKRAN SUKCESU -->
+    <div id="success-screen" class="overlay hidden">
+      <h2>🎉 Sukces!</h2>
+      <p>Oto Twój kod:</p>
+      <div id="reward-code" class="code">ABC123XYZ</div>
+    </div>
+  
+    <!-- EKRAN PORAŻKI -->
+    <div id="fail-screen" class="overlay hidden">
+      <h2>😢 Ciasteczko pękło</h2>
+      <p>Spróbuj jeszcze raz!</p>
+      <button onclick="restartGame()">Spróbuj ponownie</button>
+    </div>
+  
+    <script src="js/game.js"></script>
+  </body>
+  
