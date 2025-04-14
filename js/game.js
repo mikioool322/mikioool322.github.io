@@ -1,6 +1,5 @@
 const svg = document.getElementById("game-canvas");
 const path = document.getElementById("heartPath");
-const result = document.getElementById("result");
 const timerEl = document.getElementById("timer");
 const successScreen = document.getElementById("success-screen");
 const failScreen = document.getElementById("fail-screen");
@@ -38,17 +37,20 @@ function draw(e) {
 }
 
 function endDraw() {
-  drawing = false;
-}
+    drawing = false;
+    clearInterval(countdown);  // Zatrzymaj timer
+    checkAccuracy();           // Sprawdź wynik od razu
+  }
 
 function drawDot(x, y) {
-  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  circle.setAttribute("cx", x);
-  circle.setAttribute("cy", y);
-  circle.setAttribute("r", 0.7);
-  circle.setAttribute("fill", "#d94f30");
-  svg.appendChild(circle);
-}
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", x);
+    circle.setAttribute("cy", y);
+    circle.setAttribute("r", 0.7);
+    circle.setAttribute("fill", "#000000"); // Zmieniono na czarny
+    svg.appendChild(circle);
+  }
+  
 
 function checkAccuracy() {
   let pathLength = path.getTotalLength();
