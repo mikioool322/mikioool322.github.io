@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  
+  #ar-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #quiz-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #answers button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 8px;
+    color: white;
+  }
+  
