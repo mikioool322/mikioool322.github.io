@@ -75,11 +75,9 @@ function checkAccuracy() {
 
   const score = (passed / (points.length / 5)) * 100;
 
-  if (score > 70) {
+  
     showSuccess();
-  } else {
-    showFail();
-  }
+  
 }
 
 function startTimer() {
@@ -105,12 +103,10 @@ function generateCode() {
 
 function showSuccess() {
   successScreen.classList.remove("hidden");
-  rewardCodeEl.textContent = generateCode();
+
 }
 
-function showFail() {
-  failScreen.classList.remove("hidden");
-}
+
 
 function restartGame() {
   location.reload();

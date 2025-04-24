@@ -22,18 +22,11 @@
   </div>
 
   <!-- EKRAN SUKCESU -->
-  <div id="success-screen" class="overlay hidden">
-    <h2>🎉 Sukces!</h2>
-    <p>Oto Twój kod:</p>
-    <div id="reward-code" class="code">ABC123XYZ</div>
+  <div id="success-screen" class="overlay hidden" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">🎉 Sukces!</h2>
+    <img src="https://telepolis.pl//images/2024/02/vectra-na-jutro-baner.jpg" alt="Nagroda" style="max-width: 100%; max-height: 80vh; object-fit: contain;">
   </div>
-
-  <!-- EKRAN PORAŻKI -->
-  <div id="fail-screen" class="overlay hidden">
-    <h2>😢 Ciasteczko pękło</h2>
-    <p>Spróbuj jeszcze raz!</p>
-    <button onclick="restartGame()">Spróbuj ponownie</button>
-  </div>
+ 
 
   <script src="js/game.js"></script>
 </body>
